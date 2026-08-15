@@ -8,6 +8,7 @@ import { ArrowRight, Zap, ChevronRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { HoleBackground } from "@/components/animate-ui/components/backgrounds/hole";
+import { AetherFlowBackground } from "@/components/ui/aether-flow-hero";
 import { Badge } from "@/components/ui/badge";
 import { FEATURES, PLACEHOLDERS, STEPS, SUGGESTIONS } from "@/lib/data";
 import { PRICING_PLANS } from "@/lib/constants";
@@ -62,30 +63,16 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] selection:bg-white/20">
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center overflow-hidden px-4 pb-24 pt-40 text-center">
-        <HoleBackground
-          strokeColor="rgba(255,255,255,0.05)" // blur
-          className="absolute inset-0 h-full w-full"
-          style={{
-            maskImage:
-              "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
-          }}
-        />
+      <section className="relative flex flex-col items-center overflow-hidden px-4 pb-24 pt-40 text-center min-h-screen justify-center">
+        <AetherFlowBackground />
 
-        <Badge variant="outline" className="gap-2 p-4 backdrop-blur-sm">
-          <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-          Powered by Agentic AI
-        </Badge>
-
-        <h1 className="mx-auto max-w-3xl text-balance font-serif text-5xl leading-tight tracking-tight sm:text-6xl lg:text-7xl z-10">
-          <GrayTitle>Forge your dream</GrayTitle>
+        <h1 className="mx-auto max-w-3xl text-balance text-5xl leading-tight tracking-tight sm:text-6xl lg:text-7xl z-10 text-white" style={{ fontFamily: 'Arial, sans-serif' }}>
+          From prompt to product
           <br />
-          <BlueTitle>from a single prompt.</BlueTitle>
+          welcome to Kiln
         </h1>
 
-        <p className="mx-auto mt-6 max-w-xl text-balance text-base leading-relaxed text-white/40 z-10">
+        <p className="mx-auto mt-6 max-w-xl text-balance text-lg leading-relaxed text-white z-10" style={{ fontFamily: 'Arial, sans-serif' }}>
           Describe what you want to build. AI writes the code, picks the
           packages, and renders a live preview all inside your browser.
         </p>
@@ -113,7 +100,7 @@ export default function LandingPage() {
             />
 
             <div className="flex items-center justify-between border-t border-white/6 px-4 py-2.5">
-              <span className="text-xs text-white/20">
+              <span className="text-xs text-white/60" style={{ fontFamily: 'Arial, sans-serif' }}>
                 Press ⏎ to generate · Shift+⏎ for new line
               </span>
 
@@ -143,7 +130,7 @@ export default function LandingPage() {
               <button
                 key={s}
                 onClick={() => handleSuggestion(s)}
-                className="rounded-full border border-white/8 bg-white/4 px-3 py-1.5 text-xs text-white/40 hover:border-white/15 hover:bg-white/8 hover:text-white/70"
+                className="rounded-full border border-white/10 bg-neutral-900/90 backdrop-blur-xs px-3.5 py-1.5 text-xs font-medium text-white transition-all hover:border-purple-500 hover:bg-purple-500/10 hover:shadow-[0_0_12px_rgba(168,85,247,0.2)]"
               >
                 {s}
               </button>
@@ -167,7 +154,7 @@ export default function LandingPage() {
             </div>
 
             <div className="mx-auto flex h-6 w-64 items-center justify-center rounded-md bg-white/5 px-3">
-              <span className="text-xs text-white/25">forge.app/workspace</span>
+              <span className="text-xs text-white/25">kiln.app/workspace</span>
             </div>
           </div>
 
@@ -198,7 +185,7 @@ export default function LandingPage() {
                     <p className="text-xs text-white/60">
                       I&apos;ll build a Kanban board with Todo, In Progress, and
                       Done columns. I&apos;ll use{" "}
-                      <code className="text-blue-400/80">@dnd-kit/core</code>{" "}
+                      <code className="text-purple-400/80">@dnd-kit/core</code>{" "}
                       for smooth drag-and-drop…
                     </p>
                   </div>
@@ -232,7 +219,7 @@ export default function LandingPage() {
 
             <div className="flex flex-1 flex-col">
               <div className="flex items-center gap-1 border-b border-white/6 px-4">
-                <button className="border-b-2 border-blue-400 px-3 py-2.5 text-xs text-white">
+                <button className="border-b-2 border-purple-400 px-3 py-2.5 text-xs text-white">
                   Preview
                 </button>
                 <button className="px-3 py-2.5 text-xs text-white/30">
@@ -274,7 +261,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── FEATURES ──────────────────────────────────────────────────────── */}
-      <section className="px-4 pb-32">
+      <section id="features" className="px-4 pb-32 scroll-mt-20">
         <div className="mx-auto mb-14 max-w-5xl text-center">
           <SectionLabel>Everything you need</SectionLabel>
           <SectionHeading gray="From prompt" blue="to production." />
@@ -287,7 +274,7 @@ export default function LandingPage() {
               className="group bg-[#0a0a0a] p-7 hover:bg-[#0f0f0f]"
             >
               <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-lg border border-white/8 bg-white/4 group-hover:border-white/15 group-hover:bg-white/8">
-                <Icon className="h-4 w-4 text-white/60 group-hover:text-blue-400/70" />
+                <Icon className="h-4 w-4 text-white/60 group-hover:text-purple-400/70" />
               </div>
               <p className="mb-2 text-sm font-semibold">{label}</p>
               <p className="text-sm leading-relaxed text-white/40">{desc}</p>
@@ -297,7 +284,7 @@ export default function LandingPage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="px-4 pb-32">
+      <section id="how-it-works" className="px-4 pb-32 scroll-mt-20">
         <div className="mx-auto mb-14 max-w-3xl text-center">
           <SectionLabel>How it works</SectionLabel>
           <SectionHeading gray="Four steps" blue="to a working app." />
@@ -333,12 +320,12 @@ export default function LandingPage() {
       </section>
 
       {/* PRICING */}
-      <section className="px-4 pb-32">
+      <section id="pricing" className="px-4 pb-32 scroll-mt-20">
         <div className="mx-auto mb-14 max-w-5xl text-center">
           <SectionLabel>Simple pricing</SectionLabel>
           <SectionHeading gray="Start free," blue="scale when ready." />
 
-          <p className="mx-auto mt-4 max-w-sm text-sm text-white/35">
+          <p className="mx-auto mt-4 max-w-sm text-sm text-white/35" style={{ fontFamily: "Arial, sans-serif" }}>
             No credit card required. Upgrade or downgrade anytime.
           </p>
         </div>
@@ -371,14 +358,14 @@ export default function LandingPage() {
                 className={cn(
                   "relative flex flex-col rounded-2xl border p-7 transition-colors",
                   plan.featured
-                    ? "border-blue-500/25 bg-blue-500/4"
+                    ? "border-purple-500/25 bg-purple-500/4"
                     : "border-white/8 bg-[#0f0f0f]"
                 )}
               >
                 {/* Most popular pill */}
                 {plan.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full border border-blue-500/20 bg-[#0a0a0a] px-3 py-1 text-[11px] font-medium text-blue-400">
+                    <span className="rounded-full border border-purple-500/20 bg-[#0a0a0a] px-3 py-1 text-[11px] font-medium text-purple-400">
                       Most popular
                     </span>
                   </div>
@@ -390,7 +377,7 @@ export default function LandingPage() {
                     {plan.label}
                   </p>
                   {isActive && (
-                    <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-2 py-0.5 text-[10px] font-medium text-blue-400">
+                    <span className="rounded-full border border-purple-500/20 bg-purple-500/10 px-2 py-0.5 text-[10px] font-medium text-purple-400">
                       Active
                     </span>
                   )}
@@ -403,7 +390,7 @@ export default function LandingPage() {
 
                 {/* Price */}
                 <div className="mb-1 flex items-baseline gap-1">
-                  <span className="font-serif text-4xl">
+                  <span className="text-4xl" style={{ fontFamily: 'Arial, sans-serif' }}>
                     {plan.price === 0 ? (
                       <GrayTitle>$0</GrayTitle>
                     ) : (
@@ -425,13 +412,13 @@ export default function LandingPage() {
                       <div
                         className={cn(
                           "flex h-4 w-4 shrink-0 items-center justify-center rounded-full",
-                          plan.featured ? "bg-blue-500/15" : "bg-white/8"
+                          plan.featured ? "bg-purple-500/15" : "bg-white/8"
                         )}
                       >
                         <Check
                           className={cn(
                             "h-2.5 w-2.5",
-                            plan.featured ? "text-blue-400" : "text-white/50"
+                            plan.featured ? "text-purple-400" : "text-white/50"
                           )}
                         />
                       </div>
@@ -488,7 +475,7 @@ export default function LandingPage() {
                         className={cn(
                           "w-full rounded-full text-sm font-semibold transition-all",
                           plan.featured
-                            ? "bg-blue-500 text-white hover:bg-blue-400 active:scale-95"
+                            ? "bg-purple-500 text-white hover:bg-purple-400 active:scale-95"
                             : "border border-white/10 bg-transparent text-white/60 hover:bg-white/6 hover:text-white/90"
                         )}
                         variant="ghost"
@@ -503,7 +490,7 @@ export default function LandingPage() {
                         className={cn(
                           "w-full rounded-full text-sm font-semibold transition-all",
                           plan.featured
-                            ? "bg-blue-500 text-white hover:bg-blue-400 active:scale-95"
+                            ? "bg-purple-500 text-white hover:bg-purple-400 active:scale-95"
                             : "border border-white/10 bg-transparent text-white/60 hover:bg-white/6 hover:text-white/90"
                         )}
                         variant="ghost"
@@ -521,42 +508,33 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
-      <section className="relative mx-auto mb-32 max-w-5xl overflow-hidden rounded-2xl border border-white/8 px-10 py-24 text-center">
-        <HoleBackground
-          strokeColor="rgba(255,255,255,0.05)" // blur
-          numberOfLines={36}
-          numberOfDiscs={36}
-          particleRGBColor={[147, 197, 253]}
-          className="absolute inset-0 h-full w-full"
-          style={{
-            maskImage:
-              "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
-          }}
-        />
+      <section className="relative mx-auto mb-32 max-w-5xl overflow-hidden rounded-2xl border border-purple-500/20 px-10 py-24 text-center">
+        <AetherFlowBackground />
 
-        <SectionHeading gray="Start building," blue="for free." />
+        <div className="relative z-10 flex flex-col items-center justify-center">
+          <SectionHeading gray="Start building," blue="for free." />
 
-        <p className="mb-8 text-sm leading-relaxed text-white/40">
-          Get 10 free generations on sign up. No credit card required.
-          <br />
-          Upgrade when you&apos;re ready.
-        </p>
+          <p className="mb-8 mt-4 text-lg leading-relaxed text-white max-w-xl" style={{ fontFamily: 'Arial, sans-serif' }}>
+            Get 10 free generations on sign up. No credit card required.
+            <br />
+            Upgrade when you&apos;re ready.
+          </p>
 
-        <SignInButton mode="modal">
-          <Button
-            size="lg"
-            className="relative h-11 rounded-full bg-white px-8"
-          >
-            Get started free
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </SignInButton>
+          <SignInButton mode="modal">
+            <Button
+              size="lg"
+              className="h-11 rounded-full bg-white text-black font-semibold px-8 hover:bg-purple-600 hover:text-white transition-all duration-300"
+              style={{ fontFamily: 'Arial, sans-serif' }}
+            >
+              Get started free
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </SignInButton>
+        </div>
       </section>
 
       <footer className="relative z-10 border-t border-white/7 py-12 mx-auto px-6 flex flex-wrap items-center justify-center text-stone-400">
-        Made with ❤️ by RoadsideCoder
+        Made with ❤️ by OM GUPTA
       </footer>
     </main>
   );

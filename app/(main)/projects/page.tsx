@@ -43,8 +43,10 @@ export default async function ProjectsPage() {
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <BlueTitle className="text-6xl">Projects</BlueTitle>
-            <p className="mt-3 text-sm text-white/30">
+            <h1 className="text-6xl font-semibold text-white tracking-tight" style={{ fontFamily: "Arial, sans-serif" }}>
+              Projects
+            </h1>
+            <p className="mt-3 text-sm text-white/70" style={{ fontFamily: "Arial, sans-serif" }}>
               All your AI-generated apps in one place.
             </p>
           </div>

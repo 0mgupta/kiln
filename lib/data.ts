@@ -3,8 +3,7 @@ import { Sparkles, Zap, Code2, Eye, Package, ImageIcon } from "lucide-react";
 export const SUGGESTIONS = [
   "A Spotify stats dashboard with charts",
   "A kanban board with drag and drop",
-  "A weather app with animated icons",
-  "A personal finance tracker",
+  "A link-in-bio page for creators",
   "A recipe finder with filters",
   "A pomodoro timer with tasks",
 ];

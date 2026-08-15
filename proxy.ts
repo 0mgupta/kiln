@@ -17,17 +17,22 @@ const aj = arcjet({
 });
 
 export default clerkMiddleware(async(auth,req) =>{
-  const decision = await aj.protect(req);
-  if(decision.isDenied()){
-    return  NextResponse.json({ error: "Forbidden"}, {status: 403});
-  }
-  
+  try {
+    const decision = await aj.protect(req);
+    if(decision.isDenied()){
+      return  NextResponse.json({ error: "Forbidden"}, {status: 403});
+    }
+    
     const { userId } = await auth();
     if(!userId && isProtectedRoute(req)){
       const { redirectToSignIn} = await auth();
       return redirectToSignIn();
     }
     return NextResponse.next();
+  } catch (error) {
+    console.error("Error in clerkMiddleware:", error);
+    throw error;
+  }
 })
 
 

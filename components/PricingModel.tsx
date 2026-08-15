@@ -53,10 +53,10 @@ export function PricingModal({
       <DialogTrigger className={"cursor-pointer"}>{children}</DialogTrigger>
       <DialogContent className="border-white/8 bg-[#0f0f0f] p-0 text-white sm:max-w-5xl max-h-[90dvh] overflow-y-auto">
         <DialogHeader className="px-6 pt-6 pb-2">
-          <DialogTitle className="font-serif text-xl tracking-tight text-white/90">
+          <DialogTitle className="text-xl tracking-tight text-white/90" style={{ fontFamily: "Arial, sans-serif" }}>
             <BlueTitle className="text-4xl">{title}</BlueTitle>
           </DialogTitle>
-          <DialogDescription className="text-sm text-white/35">
+          <DialogDescription className="text-sm text-white/35" style={{ fontFamily: "Arial, sans-serif" }}>
             {description}
           </DialogDescription>
         </DialogHeader>
@@ -76,14 +76,14 @@ export function PricingModal({
                 className={cn(
                   "relative flex flex-col rounded-2xl border p-5 transition-colors",
                   plan.featured
-                    ? "border-blue-500/50 bg-blue-500/4"
+                    ? "border-purple-500/50 bg-purple-500/4"
                     : "border-white/12 bg-[#0a0a0a]"
                 )}
               >
                 {/* Most popular pill */}
                 {plan.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full border border-blue-500/20 bg-[#0a0a0a] px-3 py-1 text-[11px] font-medium text-blue-400">
+                    <span className="rounded-full border border-purple-500/20 bg-[#0a0a0a] px-3 py-1 text-[11px] font-medium text-purple-400">
                       Most popular
                     </span>
                   </div>
@@ -95,7 +95,7 @@ export function PricingModal({
                     {plan.label}
                   </p>
                   {isActive && (
-                    <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-2 py-0.5 text-[10px] font-medium text-blue-400">
+                    <span className="rounded-full border border-purple-500/20 bg-purple-500/10 px-2 py-0.5 text-[10px] font-medium text-purple-400">
                       Active
                     </span>
                   )}
@@ -108,7 +108,7 @@ export function PricingModal({
 
                 {/* Price */}
                 <div className="mb-1 flex items-baseline gap-1">
-                  <span className="font-serif text-4xl">
+                  <span className="text-4xl" style={{ fontFamily: "Arial, sans-serif" }}>
                     {plan.price === 0 ? (
                       <GrayTitle>$0</GrayTitle>
                     ) : (
@@ -130,13 +130,13 @@ export function PricingModal({
                       <div
                         className={cn(
                           "flex h-4 w-4 shrink-0 items-center justify-center rounded-full",
-                          plan.featured ? "bg-blue-500/15" : "bg-white/8"
+                          plan.featured ? "bg-purple-500/15" : "bg-white/8"
                         )}
                       >
                         <Check
                           className={cn(
                             "h-2.5 w-2.5",
-                            plan.featured ? "text-blue-400" : "text-white/50"
+                            plan.featured ? "text-purple-400" : "text-white/50"
                           )}
                         />
                       </div>
@@ -193,7 +193,7 @@ export function PricingModal({
                         className={cn(
                           "w-full rounded-full text-sm font-semibold transition-all",
                           plan.featured
-                            ? "bg-blue-500 text-white hover:bg-blue-400 active:scale-95"
+                            ? "bg-purple-500 text-white hover:bg-purple-400 active:scale-95"
                             : "border border-white/10 bg-transparent text-white/60 hover:bg-white/6 hover:text-white/90"
                         )}
                         variant="ghost"
@@ -208,7 +208,7 @@ export function PricingModal({
                         className={cn(
                           "w-full rounded-full text-sm font-semibold transition-all",
                           plan.featured
-                            ? "bg-blue-500 text-white hover:bg-blue-400 active:scale-95"
+                            ? "bg-purple-500 text-white hover:bg-purple-400 active:scale-95"
                             : "border border-white/10 bg-transparent text-white/60 hover:bg-white/6 hover:text-white/90"
                         )}
                         variant="ghost"

@@ -22,10 +22,10 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Forge - AI App Builder",
+  title: "Kiln - AI App Builder",
   description: "",
   icons: {
-    icon: "/logo-short.jpeg",
+    icon: "/logo-short.png",
   },
 };
 
@@ -48,11 +48,9 @@ export default function RootLayout({
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
-          >{children}
-             <Header />
-
+          >
+            <Header />
             <main>{children}</main>
-
             <Toaster richColors />
           </ThemeProvider> 
         </body>
