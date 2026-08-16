@@ -523,7 +523,6 @@ export function CodePanel({
         customSetup={{ dependencies }}
         options={{
           externalResources: ["https://cdn.tailwindcss.com"],
-          bundlerURL: "https://sandpack-bundler.codesandbox.io",
           recompileMode: "delayed",
           recompileDelay: 500,
         }}
