@@ -322,10 +322,12 @@ export async function POST(request: NextRequest) {
           })
         );
       } catch (err) {
-        console.error("[gen-ai-code] stream error:", err);
+        const errorMessage =
+          err instanceof Error ? err.message : "Unknown error";
+        console.error("[gen-ai-code] stream error:", errorMessage, err);
         enqueue(
           sseEvent("error", {
-            message: "Something went wrong. Please try again.",
+            message: `Generation failed: ${errorMessage}`,
           })
         );
       } finally {
