@@ -3,13 +3,11 @@ dns.setDefaultResultOrder("ipv4first");
 
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
-import { GoogleGenAI } from "@google/genai";
 import { db } from "@/lib/prisma";
 import { CREDIT_COST_PER_GENERATION } from "@/lib/constants";
 import type { Message, FileData } from "@/types/workspace";
 import { aj } from "@/lib/arcjet";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+import { generateWithFallback } from "@/lib/gemini";
 
 // ─── SSE helper ───────────────────────────────────────────────────────────────
 
@@ -185,18 +183,30 @@ export async function POST(request: NextRequest) {
       try {
         const contents = buildContents(messages, fileData);
 
-        const geminiStream = await ai.models.generateContentStream({
-          model: "gemini-3.5-flash",
-          contents,
-          config: {
-            systemInstruction: SYSTEM_PROMPT,
-            temperature: 0.7,
-            responseMimeType: "application/json",
-            thinkingConfig: {
-              includeThoughts: true,
+        enqueue(sseEvent("status", { message: "Connecting to AI…" }));
+
+        const { stream: geminiStream, model: usedModel } =
+          await generateWithFallback({
+            contents,
+            config: {
+              systemInstruction: SYSTEM_PROMPT,
+              temperature: 0.7,
+              responseMimeType: "application/json",
+              thinkingConfig: {
+                includeThoughts: true,
+              },
             },
-          },
-        });
+            onModelSwitch: (_from, to, reason) => {
+              console.warn(`[gen-ai-code] Model switched to ${to}: ${reason}`);
+              enqueue(
+                sseEvent("status", {
+                  message: `Switching model (high demand)…`,
+                })
+              );
+            },
+          });
+
+        console.log(`[gen-ai-code] Using model: ${usedModel}`);
 
         let accumulated = ""; // final JSON output
         let lastEmitTime = 0; // throttle thought emissions

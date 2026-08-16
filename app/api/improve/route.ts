@@ -5,6 +5,7 @@ import { z } from "zod";
 import { db } from "@/lib/prisma";
 import { CREDIT_COST_PER_GENERATION } from "@/lib/constants";
 import type { FileData } from "@/types/workspace";
+import { GEMINI_MODELS } from "@/lib/gemini";
 
 // ─── SSE helper ───────────────────────────────────────────────────────────────
 
@@ -118,7 +119,7 @@ export async function POST(request: NextRequest) {
 
       const agent = new Agent({
         providerId: "gemini",
-        modelId: "gemini-3.5-flash",
+        modelId: GEMINI_MODELS[0],
         apiKey: process.env.GEMINI_API_KEY!,
         maxIterations: 8,
         systemPrompt: `You are an expert React developer improving a live browser preview app.
