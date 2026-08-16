@@ -8,9 +8,9 @@ export const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 // If the primary model is overloaded (429/503), we try the next one in the list.
 
 export const GEMINI_MODELS = [
-  "gemini-2.5-flash",
-  "gemini-2.5-pro",
-  "gemini-2.0-flash",
+  "gemini-3.5-flash",
+  "gemini-3.6-flash",
+  "gemini-3.7-flash",
 ] as const;
 
 export type GeminiModel = (typeof GEMINI_MODELS)[number];
